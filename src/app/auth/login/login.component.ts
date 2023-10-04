@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../auth.service";
 
 export interface User {
@@ -11,7 +11,7 @@ export interface User {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
 
   model: Partial<User> = {};
   constructor(private auth: AuthService) {
@@ -20,9 +20,5 @@ export class LoginComponent implements OnInit{
   login(){
     this.auth.login(this.model as User);
   }
-
-  ngOnInit(): void {
-  }
-
 
 }

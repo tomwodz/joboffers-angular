@@ -117,3 +117,22 @@ section ~div {
 .inline-block {
   display: inline-block;
 }
+
+input {
+  display: block;
+  border: 2px solid #ff6d00;
+  min-width: 250px;
+  max-width: 350px;
+  width: 80%;
+  background-color: #060e1b;
+  color: #ff6d00;
+  font-size: 16px;
+  margin: 5px auto;
+  padding: 5px 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+input:hover {
+  background-color: #1b2e46;
+}
