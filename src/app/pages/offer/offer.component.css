@@ -1,0 +1,13 @@
+.odd {
+  background-color: #11191f;
+}
+
+.oddNot {
+  background-color: #2f4050;
+}
+
+.sample-offer {
+  margin: 5px 5px;
+  padding: 5px 5px;
+  border: 2px solid #ff6d00;
+}

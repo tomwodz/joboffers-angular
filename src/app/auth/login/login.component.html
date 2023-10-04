@@ -1,0 +1,14 @@
+<section class="section-content center">
+  <h2>Zaloguj</h2>
+  <form #form="ngForm" (ngSubmit)="login()">
+    <div>
+      <h3>Login:</h3>
+      <input type="text" [(ngModel)]="model.username" name="username" id="username"/>
+      <h3>Hasło:</h3>
+      <input type="text" [(ngModel)]="model.password" name="password" id="password"/>
+    </div>
+    <button type="submit" class="btn">Zaloguj</button>
+  </form>
+</section>
+
+
