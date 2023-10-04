@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {AuthService} from "../auth/auth.service";
 import {Offer} from "../pages/offer/offer.component";
-import {tap} from "rxjs";
+import {catchError, empty, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,14 @@ export class OfferService {
   getOffers(){
     return this.http.get<Offer[]>(this.url + '/offers', {headers: {
       "Authorization":"Bearer " + this.auth.getToken()
-      } }).pipe(tap(console.log));
-}
+      } }).pipe(
+        catchError((err) => {
+          if(err instanceof  HttpErrorResponse){
+            console.log('Sesja wygasła.')
+            this.auth.logout('Sesja wygasła. Zaloguj się ponownie.');
+          }
+          return empty();
+        })
+    );
+  }
 }

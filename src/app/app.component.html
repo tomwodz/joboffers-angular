@@ -1,10 +1,14 @@
 <nav class="nav">
   <div>
     <a routerLink="/information" routerLinkActive="active" class="btn">Strona Główna</a>
-    <a routerLink="/login" routerLinkActive="active" class="btn" *ngIf="!isLogged()">Zaloguj</a>
-    <a routerLink="/register" routerLinkActive="active" class="btn" *ngIf="!isLogged()">Zarejestruj</a>
-    <a routerLink="/offer" routerLinkActive="active" class="btn" *ngIf="isLogged()">Oferty</a>
-    <a (click)="logout()" routerLinkActive="active" class="btn" *ngIf="isLogged()">Wyloguj</a>
+    <ng-container *ngIf="!auth.isLogged">
+    <a routerLink="/login" routerLinkActive="active" class="btn" >Zaloguj</a>
+    <a routerLink="/register" routerLinkActive="active" class="btn">Zarejestruj</a>
+    </ng-container>
+    <ng-container *ngIf="auth.isLogged">
+    <a routerLink="/offer" routerLinkActive="active" class="btn">Oferty</a>
+    <a (click)="auth.logout('Wylogowano')" routerLinkActive="active" class="btn">Wyloguj</a>
+    </ng-container>
   </div>
 </nav>
 <router-outlet></router-outlet>

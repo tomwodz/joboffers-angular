@@ -13,7 +13,7 @@ export interface User {
 export class RegisterComponent {
 
   model: Partial<User> = {};
-  constructor(private auth: AuthService) {
+  constructor(protected auth: AuthService) {
   }
 
   register(){

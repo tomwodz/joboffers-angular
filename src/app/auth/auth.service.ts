@@ -5,8 +5,9 @@ import {User} from "./login/login.component";
 import {Router} from "@angular/router";
 
 interface Session {
-  username: string;
-  token: string;
+  username?: string;
+  token: string | null;
+  message?: string;
 }
 
 interface UserResponse {
@@ -38,6 +39,11 @@ export class AuthService {
     return session && session.username;
   }
 
+  getMessage() {
+    const session = this.session.getValue();
+    return session?.message
+  }
+
   login(user: User) {
     this.http.post<Session>(this.uri + '/token', user).subscribe(
       session => {
@@ -48,25 +54,29 @@ export class AuthService {
           this.router.navigate(['/offer'])
       },
       error => {if(error instanceof HttpErrorResponse){
-            console.log(error.error)};
+            console.log(error.message, error.status)};
       }
     );
   }
 
-  logout(){
+  logout(message?: string){
     this.isLogged = false;
-    this.session.next(null);
-    this.router.navigate(['/']);
+    this.session.next({
+      token: null,
+      message
+    });
+    this.router.navigate(['/login']);
   }
 
   register(user: User) {
     this.http.post<UserResponse>(this.uri + '/register', user).subscribe(
       user => {
           console.log(user.id, user.username, user.registered),
+            this.session.next({token: null, message: 'Zarejestrowano ' + user.username}),
           this.router.navigate(['/login'])
       },
       error => {if(error instanceof HttpErrorResponse){
-        console.log(error.error)};
+        console.log(error.message, error.status)};
       }
     );
   }

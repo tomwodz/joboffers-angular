@@ -14,7 +14,7 @@ export interface User {
 export class LoginComponent{
 
   model: Partial<User> = {};
-  constructor(private auth: AuthService) {
+  constructor(protected auth: AuthService) {
   }
 
   login(){
