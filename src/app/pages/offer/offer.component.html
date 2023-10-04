@@ -1,0 +1,13 @@
+<section class="section-content">
+  <h2>Oferty</h2>
+<div *ngIf="offers">
+<div *ngFor="let offer of offers | async, let odd = odd" [ngClass]="odd ? 'odd' : 'oddNot'" class="sample-offer">
+  <div>Firma: {{offer.companyName}}</div>
+  <div>Pozycja: {{offer.position}}</div>
+  <div>Wynagordzenie: {{offer.salary}}</div>
+  <div class="right"><a href="{{offer.offerUrl}}" target="_blank" class="btn">Pokaż</a></div>
+</div>
+</div>
+</section>
+
+
