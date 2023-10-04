@@ -1,6 +1,6 @@
 <section class="section-content center">
-  <h2>Zaloguj</h2>
-  <form #form="ngForm" (ngSubmit)="login()">
+  <h2>Zarejestruj</h2>
+  <form #form="ngForm" (ngSubmit)="register()">
     <div>
       <div>
         <p>Login: </p>
@@ -22,8 +22,6 @@
         </div>
       </ng-container>
     </div>
-    <button type="submit" class="btn" [disabled]="form.invalid">Zaloguj</button>
+    <button type="submit" class="btn" [disabled]="form.invalid">Zarejestruj</button>
   </form>
 </section>
-
-

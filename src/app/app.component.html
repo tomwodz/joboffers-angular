@@ -1,8 +1,10 @@
 <nav class="nav">
   <div>
     <a routerLink="/information" routerLinkActive="active" class="btn">Strona Główna</a>
-    <a routerLink="/login" routerLinkActive="active" class="btn">Zaloguj</a>
-    <a routerLink="/offer" routerLinkActive="active" class="btn">Oferty</a>
+    <a routerLink="/login" routerLinkActive="active" class="btn" *ngIf="!isLogged()">Zaloguj</a>
+    <a routerLink="/register" routerLinkActive="active" class="btn" *ngIf="!isLogged()">Zarejestruj</a>
+    <a routerLink="/offer" routerLinkActive="active" class="btn" *ngIf="isLogged()">Oferty</a>
+    <a (click)="logout()" routerLinkActive="active" class="btn" *ngIf="isLogged()">Wyloguj</a>
   </div>
 </nav>
 <router-outlet></router-outlet>
