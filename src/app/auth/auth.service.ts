@@ -21,7 +21,7 @@ interface UserResponse {
 })
 export class AuthService {
 
-  private uri = 'http://www.localhost:8080';
+  private uri = 'http://www.devjava.pl:9000';
   private session = new BehaviorSubject<Session | null>(null);
 
   isLogged: boolean = false;
@@ -51,7 +51,7 @@ export class AuthService {
           console.log(session.username),
           console.log(session.token),
           this.isLogged = true,
-          this.router.navigate(['/offer'])
+          this.router.navigate(['/information'])
       },
       error => {if(error instanceof HttpErrorResponse){
             console.log(error.message, error.status)};

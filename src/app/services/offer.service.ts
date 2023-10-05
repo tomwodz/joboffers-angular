@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {AuthService} from "../auth/auth.service";
-import {Offer} from "../pages/offer/offer.component";
 import {catchError, empty, Observable} from "rxjs";
+import {OfferRequestDto} from "../pages/models/offerrequestdto";
+import {Offer} from "../pages/models/offer";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
 
-  private url = 'http://localhost:8080'
+  private url = 'http://www.devjava.pl:9000'
   constructor(private http: HttpClient, private auth: AuthService) {
   }
 
@@ -25,5 +26,11 @@ export class OfferService {
           return empty();
         })
     );
+  }
+
+  postOfferRequestDto(request: OfferRequestDto): Observable<Offer> {
+    return this.http.post<Offer>(this.url + '/offers', request, {headers: {
+        "Authorization":"Bearer " + this.auth.getToken()
+      } });
   }
 }
