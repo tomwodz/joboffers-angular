@@ -1,15 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {OfferService} from "../../services/offer.service";
 import {Observable} from "rxjs";
+import {Offer} from "../models/offer";
 
 
-export interface Offer {
-  id: string;
-  companyName: string;
-  position: string;
-  salary: string;
-  offerUrl: string;
-}
+
 @Component({
   selector: 'app-offer',
   templateUrl: './offer.component.html',

@@ -1,5 +1,5 @@
 <section class="section-content">
-  <h2>Oferty</h2>
+  <h2>Oferty <a routerLink="/add-offer" routerLinkActive="active" class="btn">Dodaj ofertę</a></h2>
 <div *ngIf="offers">
 <div *ngFor="let offer of offers | async, let odd = odd" [ngClass]="odd ? 'odd' : 'oddNot'" class="sample-offer">
   <div>Firma: {{offer.companyName}}</div>

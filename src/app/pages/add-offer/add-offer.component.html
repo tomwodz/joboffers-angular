@@ -1,0 +1,45 @@
+<section class="section-content center">
+  <h2>Dodaj ofertę</h2>
+<form #form="ngForm" (ngSubmit)="postOfferRequestDto()">
+  <div>
+    <div>
+      <p>Nazwa firmy:</p>
+      <input type="text" [(ngModel)]="model.companyName" name="companyName" id="companyName" #companyName="ngModel" required/>
+    </div>
+    <ng-container *ngIf="companyName.invalid && companyName.touched">
+      <div class="error">
+        Pole nie może być puste.
+      </div>
+    </ng-container>
+    <div>
+      <p>Stanowsiko:</p>
+      <input type="text" [(ngModel)]="model.position" name="position" id="position" #position="ngModel" required/>
+    </div>
+    <ng-container *ngIf="position.invalid && position.touched">
+      <div class="error">
+        Pole nie może być puste.
+      </div>
+    </ng-container>
+    <div>
+      <p>Wynagrodzenie:</p>
+      <input type="text" [(ngModel)]="model.salary" name="salary" id="salary" #salary="ngModel" required/>
+    </div>
+    <ng-container *ngIf="salary.invalid && salary.touched">
+      <div class="error">
+        Pole nie może być puste.
+      </div>
+    </ng-container>
+    <div>
+      <p>Link url do oferty:</p>
+      <input type="text" [(ngModel)]="model.offerUrl" name="offerUrl" id="offerUrl" #offerUrl="ngModel" required/>
+    </div>
+    <ng-container *ngIf="offerUrl.invalid && offerUrl.touched">
+      <div class="error">
+        Pole nie może być puste.
+      </div>
+    </ng-container>
+  </div>
+  <button type="submit" class="btn" [disabled]="form.invalid">Dodaj ofertę</button>
+  <p>{{message}}</p>
+</form>
+</section>
